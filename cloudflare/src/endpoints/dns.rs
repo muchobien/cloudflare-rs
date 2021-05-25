@@ -134,7 +134,7 @@ pub enum ListDnsRecordsOrder {
 #[serde_with::skip_serializing_none]
 #[derive(Serialize, Clone, Debug, Default)]
 pub struct ListDnsRecordsParams {
-    pub record_type: Option<DnsContent>,
+    pub record_type: Option<DnsRecordType>,
     pub name: Option<String>,
     pub page: Option<u32>,
     pub per_page: Option<u32>,
@@ -164,6 +164,18 @@ pub enum DnsContent {
     MX { content: String, priority: u16 },
     TXT { content: String },
     SRV { content: String },
+}
+
+#[derive(Deserialize, Serialize, Clone, Debug)]
+#[serde(rename_all = "UPPERCASE")]
+pub enum DnsRecordType {
+    A,
+    AAAA,
+    CNAME,
+    NS,
+    MX,
+    TXT,
+    SRV,
 }
 
 #[derive(Deserialize, Debug)]
