@@ -134,6 +134,7 @@ pub enum ListDnsRecordsOrder {
 #[serde_with::skip_serializing_none]
 #[derive(Serialize, Clone, Debug, Default)]
 pub struct ListDnsRecordsParams {
+    #[serde(rename = "type")]
     pub record_type: Option<DnsRecordType>,
     pub name: Option<String>,
     pub page: Option<u32>,
